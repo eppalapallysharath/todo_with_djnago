@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -41,7 +40,14 @@ INSTALLED_APPS = [
     'apps.todo',
     'apps.accounts'
 ]
+
+# Use the custom minimal user model
 AUTH_USER_MODEL = 'accounts.User'
+
+# Use the custom backend that authenticates against email or username
+AUTHENTICATION_BACKENDS = [
+    'apps.accounts.backend.EmailOrUsernameBackend',
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
